@@ -881,6 +881,64 @@
             margin-bottom: 8px;
         }
 
+        .field-example-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: var(--bg-tertiary);
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            margin-top: 4px;
+            user-select: none;
+        }
+
+        .field-example-toggle:hover {
+            border-color: var(--accent-color);
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .field-example-toggle .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.2s;
+            font-size: 10px;
+        }
+
+        .field-example-toggle.expanded .toggle-arrow {
+            transform: rotate(90deg);
+        }
+
+        .field-example-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .field-example-wrapper.show {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        .field-example-code {
+            font-size: 12px;
+            color: var(--text-primary);
+            padding: 12px 14px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.5;
+            border: 1px solid var(--border-color);
+        }
+
         .field-example {
             font-size: 12px;
             color: var(--text-secondary);
@@ -1198,13 +1256,15 @@
                 name: "hotSongListEx",
                 type: "array",
                 desc: "指定歌曲名进音乐，只有在firstTurnFilterSongSwitch=on时生效",
-                descEn: "Specified song names for music, only works when firstTurnFilterSongSwitch=on"
+                descEn: "Specified song names for music, only works when firstTurnFilterSongSwitch=on",
+                example: '[\n    "忘情水",\n    "冰雨"\n]'
             },
             {
                 name: "hotSingerListEx",
                 type: "array",
                 desc: "指定歌手名进音乐，只有在firstTurnFilterSingerSwitch=on时生效",
-                descEn: "Specified singer names for music, only works when firstTurnFilterSingerSwitch=on"
+                descEn: "Specified singer names for music, only works when firstTurnFilterSingerSwitch=on",
+                example: '[\n    "刘德华",\n    "张学友"\n]'
             },
             {
                 name: "nluResultFeedBackMaxConfidenceSwitch",
@@ -1216,25 +1276,29 @@
                 name: "nextTurnMusicHotSongList",
                 type: "array",
                 desc: "次轮指定白名单音乐名",
-                descEn: "Next turn specified whitelist song names"
+                descEn: "Next turn specified whitelist song names",
+                example: '[\n    "忘情水",\n    "冰雨"\n]'
             },
             {
                 name: "nextTurnMusicHotSingerList",
                 type: "array",
                 desc: "次轮指定白名单歌手名",
-                descEn: "Next turn specified whitelist singer names"
+                descEn: "Next turn specified whitelist singer names",
+                example: '[\n    "刘德华",\n    "张学友"\n]'
             },
             {
                 name: "nextTurnMusicHotAlbumList",
                 type: "array",
                 desc: "次轮指定白名单专辑名",
-                descEn: "Next turn specified whitelist album names"
+                descEn: "Next turn specified whitelist album names",
+                example: '[\n    "可不可以"\n]'
             },
             {
                 name: "nextTurnMusicValidLength",
                 type: "number",
                 desc: "超过指定长度就认为有效",
-                descEn: "Considered valid if exceeds specified length"
+                descEn: "Considered valid if exceeds specified length",
+                example: '6'
             },
             {
                 name: "nextTurnMusicFilterSwtich",
@@ -1246,55 +1310,64 @@
                 name: "hotSongList",
                 type: "array",
                 desc: "热门歌曲列表，只有在firstTurnFilterSongSwitch=hot-off时生效",
-                descEn: "Hot song list, only works when firstTurnFilterSongSwitch=hot-off"
+                descEn: "Hot song list, only works when firstTurnFilterSongSwitch=hot-off",
+                example: '[\n    "告白气球",\n    "小毛驴"\n]'
             },
             {
                 name: "coldSongList",
                 type: "array",
                 desc: "冷门歌曲列表，只有在firstTurnFilterSongSwitch=hot-off时生效",
-                descEn: "Cold song list, only works when firstTurnFilterSongSwitch=hot-off"
+                descEn: "Cold song list, only works when firstTurnFilterSongSwitch=hot-off",
+                example: '[\n    "干嘛",\n    "谢谢你"\n]'
             },
             {
                 name: "hotChildSongList",
                 type: "array",
                 desc: "热门儿歌歌曲列表，只有在firstTurnFilterChildrenSongSwitch=hot-off时生效",
-                descEn: "Hot children song list, only works when firstTurnFilterChildrenSongSwitch=hot-off"
+                descEn: "Hot children song list, only works when firstTurnFilterChildrenSongSwitch=hot-off",
+                example: '[\n    "告白气球",\n    "小毛驴"\n]'
             },
             {
                 name: "coldChildSongList",
                 type: "array",
                 desc: "冷门儿歌歌曲列表，只有在firstTurnFilterChildrenSongSwitch=hot-off时生效",
-                descEn: "Cold children song list, only works when firstTurnFilterChildrenSongSwitch=hot-off"
+                descEn: "Cold children song list, only works when firstTurnFilterChildrenSongSwitch=hot-off",
+                example: '[\n    "干嘛",\n    "谢谢你"\n]'
             },
             {
                 name: "classifyInterveneList",
                 type: "array",
                 desc: "过滤中枢分类召回的数据",
-                descEn: "Filter中枢 classification recall data"
+                descEn: "Filter中枢 classification recall data",
+                example: '[\n    {"input":"^英语单词歌$"}\n]'
             },
             {
                 name: "labelClassifyResult",
                 type: "array",
                 desc: "干预策略，手动设置标注结果。1代表应该命中当前领域，1#不应命中当前领域",
-                descEn: "Intervention strategy, manually set label result. 1: should hit current domain, 1#: should not hit"
+                descEn: "Intervention strategy, manually set label result. 1: should hit current domain, 1#: should not hit",
+                example: '[\n    {"input":"英语单词歌", "domain":"音乐", "label":"1"},\n    {"input":"找美女", "domain":"音乐", "label":"1#"}\n]'
             },
             {
                 name: "labelClassifyResultEx",
                 type: "array",
                 desc: "干预策略扩展版，支持正则表达式。必须^开头, $结尾",
-                descEn: "Intervention strategy extended version, supports regex. Must start with ^ and end with $"
+                descEn: "Intervention strategy extended version, supports regex. Must start with ^ and end with $",
+                example: '[\n    {"input":"^英语单词歌$", "domain":"音乐", "label":"1"},\n    {"input":"^找美女$", "domain":"音乐", "label":"1#"}\n]'
             },
             {
                 name: "infereceInterveneFilterList",
                 type: "array",
                 desc: "小分类模型过滤干预策略",
-                descEn: "Small classification model filter intervention strategy"
+                descEn: "Small classification model filter intervention strategy",
+                example: '[\n    {"input":"^英语单词歌$"}\n]'
             },
             {
                 name: "dynamicVadInterveneList",
                 type: "array",
                 desc: "干预是否拼接",
-                descEn: "Intervention for concatenation"
+                descEn: "Intervention for concatenation",
+                example: '[\n    {"s1":"暂停", "s2":"播放", "useConcat":true}\n]'
             },
             {
                 name: "singleWordSwitch",
@@ -1312,7 +1385,8 @@
                 name: "singleWordList",
                 type: "array",
                 desc: "私有指定生效单字策略列表，只对指定产品生效",
-                descEn: "Private single word strategy list, only effective for specified products"
+                descEn: "Private single word strategy list, only effective for specified products",
+                example: '["啊", "哎"]'
             },
             {
                 name: "baIsFallback",
@@ -1342,13 +1416,15 @@
                 name: "followUpAllowedSkillList",
                 type: "array",
                 desc: "次轮允许跳转BA列表",
-                descEn: "Next turn allowed jump to BA list"
+                descEn: "Next turn allowed jump to BA list",
+                example: '[\n    "2019030500000001",\n    "2019030500000002"\n]'
             },
             {
                 name: "sDCFilterPolicy",
                 type: "object",
                 desc: "延迟倾听状态下的过滤策略配置，包含首轮歌曲名过滤和POI类型过滤",
-                descEn: "Filter policy config under delayed listening state"
+                descEn: "Filter policy config under delayed listening state",
+                example: '{\n    "firstTurnFilterSongSwitch":"on",\n    "firstTurnFilterPoiSwitch":"on"\n}'
             },
             {
                 name: "firstTurnFilterSongSwitch",
@@ -1450,7 +1526,8 @@
                 name: "singEntityFilterList",
                 type: "array",
                 desc: "指定单实体过滤，首轮，并且一定是source=aidui，内置语义出，前端定制语义不生效",
-                descEn: "Specified single entity filter, first turn, must be source=aidui"
+                descEn: "Specified single entity filter, first turn, must be source=aidui",
+                example: '[\n    {\n        "skillId":"2019030500000001",\n        "slots":[["__act__", "intent", "片名"], ["intent", "片名"]],\n        "intents":["播放影视"]\n    },\n    {\n        "skillId":"2019030500000002",\n        "slots":[["intent", "故事名"]],\n        "intents":["播放故事"]\n    }\n]'
             },
             {
                 name: "multiIntentLlmClassifySwitch",
@@ -1474,13 +1551,15 @@
                 name: "dispatchUnSupport",
                 type: "array",
                 desc: "屏蔽指定技能，首轮如果命中如下技能，结束对话，提示配置的nlg",
-                descEn: "Block specified skills, if hit in first turn, end dialog and show configured nlg"
+                descEn: "Block specified skills, if hit in first turn, end dialog and show configured nlg",
+                example: '[\n    {\n        "skillId":"2019031500000131",\n        "nlg":["当前不支持此功能，技能正在开发中"]\n    },\n    {\n        "skillId":"1900060100000062",\n        "nlg":["当前不支持此功能，技能正在开发中"]\n    }\n]'
             },
             {
                 name: "apiNluConfig",
                 type: "object",
                 desc: "API语义配置，包含语种设置、槽位输出等",
-                descEn: "API NLU config, includes language settings, slot output, etc."
+                descEn: "API NLU config, includes language settings, slot output, etc.",
+                example: '{\n    "apiLanguageClass":"English",\n    "useNormLanguageClassFirst":true,\n    "apiSlot":true\n}'
             },
             {
                 name: "yieldSwitch",
@@ -1504,7 +1583,8 @@
                 name: "baConfig",
                 type: "object",
                 desc: "BA配置，包含QA问答对条件优先级、单轮策略、目标管理、推荐策略、反问策略等",
-                descEn: "BA config, includes QA condition priority, single turn strategy, target management, recommend, rhetorical question"
+                descEn: "BA config, includes QA condition priority, single turn strategy, target management, recommend, rhetorical question",
+                example: '{\n    "sysCondition":"priority",\n    "noMonitorSkillList":["skillId1", "skillId2"],\n    "singleTurn":"off",\n    "targetManagement":"off",\n    "recommend":"off",\n    "rhetoricalQuestion":"off"\n}'
             },
             {
                 name: "slotsDialectSwitch",
@@ -1534,7 +1614,8 @@
                 name: "reduceSkillConfidenceWeight",
                 type: "array",
                 desc: "对单技能设置置信度系数",
-                descEn: "Set confidence weight for single skill"
+                descEn: "Set confidence weight for single skill",
+                example: '[\n    {\n        "skillId":"2019031500000131",\n        "confidenceWeigth":0.4\n    }\n]'
             },
             {
                 name: "harshPosScoreSwitch",
@@ -1546,7 +1627,8 @@
                 name: "chitChatSkills",
                 type: "object",
                 desc: "设置chitchat技能配置，结合语种调度",
-                descEn: "Chitchat skill config, combined with language dispatch"
+                descEn: "Chitchat skill config, combined with language dispatch",
+                example: '{\n    "Cantonese":["ba_skill_id_1"],\n    "English":["ba_skill_id_2"]\n}'
             },
             {
                 name: "songAndMovieCompetitiveStrategySwitch",
@@ -1558,13 +1640,15 @@
                 name: "exclude_dispatch_skill_list",
                 type: "array",
                 desc: "调度前过滤指定技能列表信息",
-                descEn: "Filter specified skill list before dispatch"
+                descEn: "Filter specified skill list before dispatch",
+                example: '["2019032500000070", "2019032500000071"]'
             },
             {
                 name: "excludeDispatchIntentList",
                 type: "array",
                 desc: "指定过滤某些意图解析",
-                descEn: "Filter specified intent parsing"
+                descEn: "Filter specified intent parsing",
+                example: '[\n    {"skillId":"2019032500000070", "task":"中控", "intent":"系统控制", "multiTurnDoNotExclude":true},\n    {"skillId":"2019032500000070", "task":"中控", "intent":"信息查询"}\n]'
             },
             {
                 name: "multiIntentPriorityScheduleSkillFirst",
@@ -1750,19 +1834,22 @@
                 name: "skillNbestConfirm",
                 type: "array",
                 desc: "技能跳转确认策略，技能跳转确认详细配置，存在此配置代表如果首轮解析到这两个领域，需要再确认一轮",
-                descEn: "Skill nbest confirm strategy, need confirm if first turn parses to these domains"
+                descEn: "Skill jump confirm strategy, need confirm if first turn parses to these domains",
+                example: '[\n    {\n        "nlg":"请问您想听#sys.input#的故事还是听歌呢？",\n        "condition":[\n            {\n                "val":{\n                    "2019030500000001":"true",\n                    "2019030500000002":"true"\n                },\n                "opt":"table equal",\n                "param":"sys.skillId"\n            }\n        ]\n    }\n]'
             },
             {
                 name: "dispatchUnSupport",
                 type: "array",
                 desc: "屏蔽指定技能，首轮如果命中如下技能，结束对话，提示配置的nlg",
-                descEn: "Block specified skills, if first turn hits these skills, end dialog and show nlg"
+                descEn: "Block specified skills, if first turn hits these skills, end dialog and show nlg",
+                example: '[\n    {\n        "skillId":"2019031500000131",\n        "nlg":["当前不支持此功能，技能正在开发中"]\n    },\n    {\n        "skillId":"1900060100000062",\n        "nlg":["当前不支持此功能，技能正在开发中"]\n    }\n]'
             },
             {
                 name: "apiNluConfig",
                 type: "object",
                 desc: "信源NLU配置，包含信源语种、使用识别语种优选、打开信源语义槽输出等",
-                descEn: "API NLU config, includes api language class, norm language class first, api slot"
+                descEn: "API NLU config, includes api language class, norm language class first, api slot",
+                example: '{\n    "apiLanguageClass":"English",\n    "useNormLanguageClassFirst":true,\n    "apiSlot":true\n}'
             }
         ];
 
@@ -2408,8 +2495,16 @@
             }
             
             let html = '';
-            fields.forEach(field => {
+            fields.forEach((field, index) => {
                 const typeClass = field.type || 'string';
+                const exampleBtn = field.example 
+                    ? `<div class="field-example-toggle" onclick="toggleExample(this)">
+                           <span class="toggle-arrow">▶</span> 查看示例
+                       </div>
+                       <div class="field-example-wrapper">
+                           <div class="field-example-code">"${field.name}": ${escapeHtml(field.example)}</div>
+                       </div>`
+                    : '';
                 html += `
                     <div class="field-item">
                         <div class="field-name">
@@ -2417,11 +2512,33 @@
                             <span class="field-tag ${typeClass}">${field.type}</span>
                         </div>
                         <div class="field-desc">${field.desc}</div>
+                        ${exampleBtn}
                     </div>
                 `;
             });
             
             fieldList.innerHTML = html;
+        }
+
+        function toggleExample(el) {
+            const wrapper = el.nextElementSibling;
+            const isExpanded = el.classList.contains('expanded');
+            
+            if (isExpanded) {
+                el.classList.remove('expanded');
+                wrapper.classList.remove('show');
+                el.innerHTML = '<span class="toggle-arrow">▶</span> 查看示例';
+            } else {
+                el.classList.add('expanded');
+                wrapper.classList.add('show');
+                el.innerHTML = '<span class="toggle-arrow">▶</span> 收起示例';
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         updateLineNumbers();
