@@ -974,6 +974,95 @@
             margin-bottom: 16px;
         }
 
+        .footer {
+            text-align: center;
+            padding: 24px 0 16px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--border-color);
+            margin: 0 auto 12px;
+        }
+
+        .footer-copyright {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .footer-rights {
+            opacity: 0.7;
+        }
+
+        .header-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .fun-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 8px;
+        }
+
+        .fun-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            animation: tagFloat 3s ease-in-out infinite;
+            cursor: default;
+            transition: transform 0.2s;
+        }
+
+        .fun-tag:hover {
+            transform: scale(1.08);
+        }
+
+        .fun-tag:nth-child(2n) { animation-delay: 0.5s; }
+        .fun-tag:nth-child(3n) { animation-delay: 1s; }
+        .fun-tag:nth-child(5n) { animation-delay: 1.5s; }
+
+        @keyframes tagFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .fun-tag.tag-green { background: #d1fae5; color: #065f46; }
+        .fun-tag.tag-blue { background: #dbeafe; color: #1e40af; }
+        .fun-tag.tag-purple { background: #ede9fe; color: #5b21b6; }
+        .fun-tag.tag-orange { background: #ffedd5; color: #9a3412; }
+        .fun-tag.tag-pink { background: #fce7f3; color: #9d174d; }
+        .fun-tag.tag-cyan { background: #cffafe; color: #155e75; }
+        .fun-tag.tag-yellow { background: #fef3c7; color: #92400e; }
+        .fun-tag.tag-red { background: #fee2e2; color: #991b1b; }
+
+        [data-theme="dark"] .fun-tag.tag-green { background: #064e3b; color: #6ee7b7; }
+        [data-theme="dark"] .fun-tag.tag-blue { background: #1e3a5f; color: #93c5fd; }
+        [data-theme="dark"] .fun-tag.tag-purple { background: #3b0764; color: #c4b5fd; }
+        [data-theme="dark"] .fun-tag.tag-orange { background: #431407; color: #fdba74; }
+        [data-theme="dark"] .fun-tag.tag-pink { background: #500724; color: #f9a8d4; }
+        [data-theme="dark"] .fun-tag.tag-cyan { background: #083344; color: #67e8f9; }
+        [data-theme="dark"] .fun-tag.tag-yellow { background: #422006; color: #fcd34d; }
+        [data-theme="dark"] .fun-tag.tag-red { background: #450a0a; color: #fca5a5; }
+
         @media (max-width: 768px) {
             .stats {
                 flex-wrap: wrap;
@@ -993,8 +1082,20 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔍 产品高级配置JSON校验</h1>
-            <p>校验JSON格式的括号、逗号、引号等语法错误，显示错误行号和错误内容</p>
+            <div class="header-wrapper">
+                <div class="header-left">
+                    <h1>🔍 产品高级配置JSON校验</h1>
+                </div>
+                <div class="fun-tags">
+                    <span class="fun-tag tag-green">🟢 免登录</span>
+                    <span class="fun-tag tag-blue">🌐 纯前端</span>
+                    <span class="fun-tag tag-purple">🔒 无数据上传</span>
+                    <span class="fun-tag tag-orange">⚡ 即开即用</span>
+                    <span class="fun-tag tag-pink">🆓 永久免费</span>
+                    <span class="fun-tag tag-cyan">🎯 精准报错</span>
+                    <span class="fun-tag tag-red">💪 打工人必备</span>
+                </div>
+            </div>
             <div class="toolbar">
                 <button class="btn btn-primary" onclick="validateInput()">
                     <span>✓</span> 校验格式
@@ -1013,6 +1114,13 @@
                 </button>
                 <button class="btn" onclick="pasteInput()">
                     <span>📥</span> 粘贴
+                </button>
+                <button class="btn" onclick="uploadFile()">
+                    <span>📁</span> 上传文件
+                </button>
+                <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="handleFileUpload(event)">
+                <button class="btn" onclick="downloadFile()">
+                    <span>💾</span> 下载文件
                 </button>
                 <div style="flex: 1;"></div>
                 <button class="btn" onclick="toggleTheme()">
@@ -1214,6 +1322,12 @@
     </div>
 
     <div class="toast" id="toast"></div>
+
+    <div class="footer">
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">Copyright © 2026 Mr.Yang. All rights reserved.</div>
+        <div class="footer-rights">本项目由 Mr.Yang 独立开发与维护，仅供内部使用</div>
+    </div>
 
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
         <div class="modal" onclick="event.stopPropagation()">
@@ -2401,6 +2515,55 @@
             } catch (e) {
                 showToast('粘贴失败，请检查剪贴板权限 / Paste failed, please check clipboard permissions', 'error');
             }
+        }
+
+        function uploadFile() {
+            document.getElementById('fileInput').click();
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!file.name.endsWith('.json')) {
+                showToast('请上传 .json 文件 / Please upload a .json file', 'error');
+                event.target.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                editor.value = e.target.result;
+                updateLineNumbers();
+                updateStats();
+                updateInputStatus();
+                showToast(`已加载文件: ${file.name} / File loaded: ${file.name}`, 'success');
+            };
+            reader.onerror = function() {
+                showToast('文件读取失败 / File read failed', 'error');
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function downloadFile() {
+            const input = editor.value.trim();
+            if (!input) {
+                showToast('没有内容可下载 / No content to download', 'error');
+                return;
+            }
+
+            const blob = new Blob([input], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+            a.href = url;
+            a.download = `config_${timestamp}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('文件已下载 / File downloaded', 'success');
         }
 
         function insertTemplate(type) {
