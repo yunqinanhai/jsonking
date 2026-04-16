@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON格式校验工具</title>
+    <title>产品高级配置JSON校验</title>
     <style>
         :root {
             --bg-primary: #f5f7fa;
@@ -935,7 +935,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔍 JSON格式校验工具</h1>
+            <h1>🔍 产品高级配置JSON校验</h1>
             <p>校验JSON格式的括号、逗号、引号等语法错误，显示错误行号和错误内容</p>
             <div class="toolbar">
                 <button class="btn btn-primary" onclick="validateInput()">
@@ -1571,6 +1571,198 @@
                 type: "string",
                 desc: "优先调度多意图优先，默认off，on:多意图优先给优先调度技能处理",
                 descEn: "Priority schedule multi-intent first, default off, on: multi-intent priority to priority schedule skill"
+            },
+            {
+                name: "firstTurnFilterRadioColumnAndArtistSwitch",
+                type: "string",
+                desc: "首轮网络电台栏目+艺人过滤策略，on代表栏目+艺人过滤，默认off",
+                descEn: "First turn radio column + artist filter strategy"
+            },
+            {
+                name: "firstTurnFilterRadioProgramAndColumnSwitch",
+                type: "string",
+                desc: "首轮网络电台节目+栏目过滤策略，on代表节目+栏目过滤，默认off",
+                descEn: "First turn radio program + column filter strategy"
+            },
+            {
+                name: "firstTurnFilterRadioProgramAndArtistSwitch",
+                type: "string",
+                desc: "首轮网络电台节目+艺人过滤策略，on代表节目+艺人过滤，默认off",
+                descEn: "First turn radio program + artist filter strategy"
+            },
+            {
+                name: "firstTurnFilterRadioReceiverChannelSwitch",
+                type: "string",
+                desc: "首轮收音机频道过滤策略，on代表频道过滤，默认off",
+                descEn: "First turn radio receiver channel filter strategy"
+            },
+            {
+                name: "firstTurnFilterPoemSingleObjectSwitch",
+                type: "string",
+                desc: "首轮古诗单对象过滤策略，on代表首轮古诗单对象过滤，默认off",
+                descEn: "First turn poem single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterMusicSingleObjectSwitch",
+                type: "string",
+                desc: "首轮音乐单对象过滤策略，on代表首轮音乐单对象过滤，默认off",
+                descEn: "First turn music single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterMusicSingleTypeSwitch",
+                type: "string",
+                desc: "首轮音乐单类型过滤策略，on代表首轮音乐单类型过滤，默认off",
+                descEn: "First turn music single type filter strategy"
+            },
+            {
+                name: "firstTurnFilterMusicSingleAppSwitch",
+                type: "string",
+                desc: "首轮音乐单应用名称过滤策略，on代表首轮音乐单应用名称过滤，默认off",
+                descEn: "First turn music single app name filter strategy"
+            },
+            {
+                name: "firstTurnFilterMusicSingleThemeTypeSwitch",
+                type: "string",
+                desc: "首轮音乐单主题曲类型过滤策略，on代表首轮音乐单主题曲类型过滤，默认off",
+                descEn: "First turn music single theme type filter strategy"
+            },
+            {
+                name: "firstTurnFilterMusicSingleThemeSwitch",
+                type: "string",
+                desc: "首轮音乐单主题曲过滤策略，on代表首轮音乐单主题曲过滤，默认off",
+                descEn: "First turn music single theme filter strategy"
+            },
+            {
+                name: "firstTurnFilterMovieSingleTypeSwitch",
+                type: "string",
+                desc: "首轮影视单类型过滤策略，on代表首轮单影视类型过滤，默认off",
+                descEn: "First turn movie single type filter strategy"
+            },
+            {
+                name: "firstTurnFilterMovieSingleObjectSwitch",
+                type: "string",
+                desc: "首轮影视单对象过滤策略，on代表首轮单影视对象过滤，默认off",
+                descEn: "First turn movie single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterStorySingleObjectSwitch",
+                type: "string",
+                desc: "首轮故事单对象过滤策略，on代表首轮单故事对象过滤，默认off",
+                descEn: "First turn story single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterStorySingleAlbumSwitch",
+                type: "string",
+                desc: "首轮故事专辑名过滤策略，on代表首轮单故事专辑名过滤，默认off",
+                descEn: "First turn story single album filter strategy"
+            },
+            {
+                name: "firstTurnFilterPhoneSingleObjectSwitch",
+                type: "string",
+                desc: "首轮电话单对象过滤策略，on代表首轮单电话对象过滤，默认off",
+                descEn: "First turn phone single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterNewsSingleObjectSwitch",
+                type: "string",
+                desc: "首轮新闻单对象过滤策略，on代表首轮单新闻对象过滤，默认off",
+                descEn: "First turn news single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterAirTicketSingleObjectSwitch",
+                type: "string",
+                desc: "首轮机票单对象过滤策略，on代表首轮单机票对象过滤，默认off",
+                descEn: "First turn air ticket single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterAudiobookSingleObjectSwitch",
+                type: "string",
+                desc: "首轮有声书单对象过滤策略，on代表首轮单有声书对象过滤，默认off",
+                descEn: "First turn audiobook single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterRadioSingleObjectSwitch",
+                type: "string",
+                desc: "首轮网络电台单对象过滤策略，on代表首轮单网络电台对象过滤，默认off",
+                descEn: "First turn radio single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterRadioSingleCategorySwitch",
+                type: "string",
+                desc: "首轮网络电台单类别过滤策略，on代表首轮单网络电台类别过滤，默认off",
+                descEn: "First turn radio single category filter strategy"
+            },
+            {
+                name: "firstTurnFilterQuYiSingleObjectSwitch",
+                type: "string",
+                desc: "首轮曲艺单类别过滤策略，on代表首轮单曲艺类别过滤，默认off",
+                descEn: "First turn QuYi single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterOperaSingleObjectSwitch",
+                type: "string",
+                desc: "首轮戏曲单对象过滤策略，on代表首轮单戏曲对象过滤，默认off",
+                descEn: "First turn opera single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterOperaSingleCategorySwitch",
+                type: "string",
+                desc: "首轮戏曲单类别过滤策略，on代表首轮单戏曲类别过滤，默认off",
+                descEn: "First turn opera single category filter strategy"
+            },
+            {
+                name: "firstTurnFilterOperaSingerTitleSwitch",
+                type: "string",
+                desc: "首轮戏曲剧名过滤策略，on代表首轮剧名过滤，默认off",
+                descEn: "First turn opera singer title filter strategy"
+            },
+            {
+                name: "firstTurnFilterBroadcasterSingleObjectSwitch",
+                type: "string",
+                desc: "首轮广播电台单对象过滤策略，on代表首轮广播电台单对象过滤，默认off",
+                descEn: "First turn broadcaster single object filter strategy"
+            },
+            {
+                name: "firstTurnFilterBroadcasterSingleRadioSwitch",
+                type: "string",
+                desc: "首轮广播电台单电台过滤策略，on代表首轮广播电台单电台过滤，默认off",
+                descEn: "First turn broadcaster single radio filter strategy"
+            },
+            {
+                name: "singEntityFilterList",
+                type: "array",
+                desc: "指定单实体过滤，首轮，并且一定是source=aidui，内置语义出，前端定制语义不生效",
+                descEn: "Single entity filter list, first turn, source must be aidui"
+            },
+            {
+                name: "multiIntentLlmClassifySwitch",
+                type: "string",
+                desc: "多意图切句后，子句开启中枢大模型调用，on代表子句开启中枢分类，默认off",
+                descEn: "Multi-intent LLM classify switch, on: enable sub-sentence LLM classify"
+            },
+            {
+                name: "skillExitFirst",
+                type: "string",
+                desc: "技能级退出优先策略，on代表优先技能级退出，仅在次轮生效，默认off",
+                descEn: "Skill exit first strategy, on: skill exit priority, only works in next turn"
+            },
+            {
+                name: "skillNbestConfirm",
+                type: "array",
+                desc: "技能跳转确认策略，技能跳转确认详细配置，存在此配置代表如果首轮解析到这两个领域，需要再确认一轮",
+                descEn: "Skill nbest confirm strategy, need confirm if first turn parses to these domains"
+            },
+            {
+                name: "dispatchUnSupport",
+                type: "array",
+                desc: "屏蔽指定技能，首轮如果命中如下技能，结束对话，提示配置的nlg",
+                descEn: "Block specified skills, if first turn hits these skills, end dialog and show nlg"
+            },
+            {
+                name: "apiNluConfig",
+                type: "object",
+                desc: "信源NLU配置，包含信源语种、使用识别语种优选、打开信源语义槽输出等",
+                descEn: "API NLU config, includes api language class, norm language class first, api slot"
             }
         ];
 
